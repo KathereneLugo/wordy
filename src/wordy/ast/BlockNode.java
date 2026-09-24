@@ -1,5 +1,6 @@
 package wordy.ast;
 
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -68,5 +69,14 @@ public class BlockNode extends StatementNode {
         for(StatementNode s: statements){
             s.doRun(context);
         }
+    }
+
+    @Override
+    public void compile(PrintWriter out) {
+        out.println("{");
+        for (int index = 0; index < statements.size(); index++) {
+            statements.get(index).compile(out);
+        }
+        out.println("}");
     }
 }

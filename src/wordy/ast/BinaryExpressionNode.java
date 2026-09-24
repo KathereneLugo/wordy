@@ -1,5 +1,5 @@
 package wordy.ast;
-
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -88,5 +88,50 @@ public class BinaryExpressionNode extends ExpressionNode {
         }
         
         throw new UnsupportedOperationException("Unsupported operator: " + operator);
+    } 
+
+    @Override
+    public void compile(PrintWriter out) {
+         if(operator.equals(Operator.ADDITION)) {
+            out.println("(");
+            lhs.compile(out);
+            out.println(" + ");
+            rhs.compile(out);
+            out.println(")");
+        }
+
+        if(operator.equals(Operator.SUBTRACTION)) {
+            out.println("(");
+            lhs.compile(out);
+            out.println(" - ");
+            rhs.compile(out);
+            out.println(")");
+        }
+
+        if(operator.equals(Operator.MULTIPLICATION)) {
+            out.println("(");
+            lhs.compile(out);
+            out.println(" * ");
+            rhs.compile(out);
+            out.println(")");
+        }
+        
+        if(operator.equals(Operator.DIVISION)) {
+            out.println("(");
+            lhs.compile(out);
+            out.println(" / ");
+            rhs.compile(out);
+            out.println(")");
+        }
+
+        if(operator.equals(Operator.EXPONENTIATION)) {
+            out.println("Math.pow");
+            out.println("(");
+            lhs.compile(out);
+            out.println(" , ");
+            rhs.compile(out);
+            out.println(")");
+        }
+
     }
 }

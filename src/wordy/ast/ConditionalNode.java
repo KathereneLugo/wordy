@@ -1,5 +1,6 @@
 package wordy.ast;
 
+import java.io.PrintWriter;
 import java.util.Map;
 import java.util.Objects;
 
@@ -107,5 +108,45 @@ public class ConditionalNode extends StatementNode {
                 ifFalse.doRun(context);
             }
         }
+    }
+
+    @Override
+    public void compile(PrintWriter out) {
+        if(operator.equals(Operator.EQUALS)){
+            out.println("if");
+            out.println("(");
+            lhs.compile(out);
+            out.println(" = ");
+            rhs.compile(out);
+            out.println(")");
+            ifTrue.compile(out);
+            out.println("else");
+            ifFalse.compile(out);
+        }
+
+        if(operator.equals(Operator.GREATER_THAN)){
+            out.println("if");
+            out.println("(");
+            lhs.compile(out);
+            out.println(" > ");
+            rhs.compile(out);
+            out.println(")");
+            ifTrue.compile(out);
+            out.println("else");
+            ifFalse.compile(out);
+        }
+
+        if(operator.equals(Operator.LESS_THAN)){
+           out.println("if");
+            out.println("(");
+            lhs.compile(out);
+            out.println(" < ");
+            rhs.compile(out);
+            out.println(")");
+            ifTrue.compile(out);
+            out.println("else");
+            ifFalse.compile(out);
+        }
+
     }
 }
