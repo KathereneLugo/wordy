@@ -1,0 +1,4 @@
+I was surprised to find parts of my code that could have been simpler and taken less lines of code. For example, 
+the methods I implemented for my BinaryExpressionNode AST, were more consice in your code. However, I was also surprised
+to see code that was very short. Many times, while doing the assignment, I felt the solution I had come up with was too 
+simple. I noticed, that sometimes, it really just is that tiny line of code that makes your program work. 
