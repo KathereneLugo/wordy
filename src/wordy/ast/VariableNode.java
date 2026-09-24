@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Objects;
 
-import wordy.compiler.WordyCompiler;
-import wordy.compiler.WordyExecutable;
 import wordy.interpreter.EvaluationContext;
 
 /**
